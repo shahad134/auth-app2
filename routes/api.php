@@ -37,8 +37,6 @@ Route::group([
         //C:\Users\shahd\Desktop\tharwat-ionic\auth-app\app\Http\Controllers\infoconnect.php
        // Route::post('info_connect',[infoconnect::class,'apistore']);
        Route::post('infoconnects', [infoconnects::class,'apistore']);
-
-
         Route::get('/receive_donation',[ListOfDonation::class,'receive_donation']);
         Route::get('/logout', [AuthController::class,'logout']);
         // Route::get('/user', 'Auth\AuthController@user');

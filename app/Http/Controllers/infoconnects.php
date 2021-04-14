@@ -50,7 +50,8 @@ class infoconnects extends Controller
                 'info_connect.name'=> 'required',
                  'info_connect.numberphone'=> 'required',
                  'info_connect.birth_date'=> 'required',
-                
+                 'info_connect.time'=> 'required',
+
             ]);
             $infoconnect=new infoconnectt();
             $infoconnect->user_id=$user; 
@@ -58,6 +59,8 @@ class infoconnects extends Controller
             $infoconnect->name=$request->{'info_connect.name'};
              $infoconnect->numberphone=$request->{'info_connect.numberphone'};
              $infoconnect->birth_date=$request->{'info_connect.birth_date'};
+             $infoconnect->time=$request->{'info_connect.time'};
+
             $infoconnect->save();
             if (auth()->user()->infoconnects())
                 return response()->json([

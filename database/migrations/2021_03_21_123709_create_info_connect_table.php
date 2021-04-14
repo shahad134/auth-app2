@@ -20,6 +20,7 @@ class CreateInfoConnectTable extends Migration
             $table->string('name');
             $table->string('numberphone');
              $table->dateTime('birth_date');
+             $table->string('time');
             $table->timestamps();
 
         });

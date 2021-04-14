@@ -50,16 +50,7 @@ class ListOfDonation extends Controller
         $donations->accessories_and_mobiles=json_encode($request->{'donations_info.accessories_and_mobiles'},JSON_UNESCAPED_UNICODE);
         $donations->medical_devices=json_encode($request->{'donations_info.medical_devices'},JSON_UNESCAPED_UNICODE);
         $donations->miscellaneous=json_encode($request->{'donations_info.miscellaneous'},JSON_UNESCAPED_UNICODE);
-        //$table ->date('birth_date');
-        //$donations->birth_date=$request->{'donations_info.birth_date'};
-
-
-        //
-
-
-
-     
-        $donations->save();
+         $donations->save();
         if (auth()->user()->donations())
             return response()->json([
             'success' => true,
@@ -72,14 +63,17 @@ class ListOfDonation extends Controller
         ], 500);
     }
     public function receive_donation()
-    {
-        $don= DB::table('list_donation')->latest('id')->get();
-        // $don =collect($don)->pluck('id');
-        // return $don;
+     {
+        // $users = User::all();
+        $donation=DB::table('list_donation')->latest('id')->get();
+      return ($donation);
         
    //return Auth::user('id')->donations()->latest('id')->get()->toArray();
  
 
+    //  $don= DB::table('list_donation')->latest('id')->get();
+
+        //  $don =ListDonation::pluck('id'); 
     } 
     // public function user(Request $request)
     // {
