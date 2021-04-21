@@ -28,10 +28,10 @@ class AuthController extends Controller
             $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
         $rot='';
-        if ( auth()->user()->is_admin !=1){
+        if ( auth()->user()->is_admin !=0){
             $rot='/admin';
         }else {
-            $rot='/donation';
+            $rot='/home';
         }
         return response()->json([
             'access_token' => $tokenResult->accessToken,
@@ -56,14 +56,14 @@ class AuthController extends Controller
         $user->is_admin = 1;
         $user->save();
         return response()->json([
-            'message' => 'Successfully created user!'
+            'message' => 'تم إنشاء المستخدم بنجاح'
         ], 201);
     }
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'تم تسجيل الخروج بنجاح'
         ]);
     }
   
@@ -74,6 +74,13 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
+        // $request->validate([
+        //     'name' => 'required|string',
+        // ]);
+        // $id = $request->user()->id;
+        // $user_email = DB::table('users')
+        //             ->where('id', $id)
+        //             ->update(['email' => $request->email]);
         return response()->json($request->user());
     }
 }
